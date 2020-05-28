@@ -44,7 +44,7 @@ class Deck:
                 self.cards.append(Card(i,j))
         shuffle(self.cards)
 
-    def pop_card(self):
+    def draw(self):
         if len(self.cards) == 0:
             # return None
             return
@@ -98,8 +98,8 @@ class Game:
             if response == 'q':
                 break
             
-            player1card = self.deck.pop_card()
-            player2card = self.deck.pop_card()
+            player1card = self.deck.draw()
+            player2card = self.deck.draw()
 
             player1name = self.player1.name
             player2name = self.player2.name
