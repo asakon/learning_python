@@ -69,15 +69,15 @@ class Game:
     # Gameは、
     # ゲームをプレイするメソッド、
     # プレイする中で使用されるメソッドがある
-    #  - カードを引くメソッド
-    #  - ラウンド毎の勝者を宣言するためのメソッド
+    #  - 引いたカードを表示するメソッド
+    #  - ラウンド毎の勝者を表示するメソッド
     #  - ゲームの最後に、勝者を判定して名前を告げるメソッド
 
-    def draw(self, player1, player1card, player2, player2card):
+    def print_draw(self, player1, player1card, player2, player2card):
         d = "{} は {}、 {} は {} を引きました"
         print(d.format(player1, player1card, player2, player2card))
     
-    def declear_winner_round(self, winner):
+    def print_winner(self, winner):
         w = "このラウンドは {} が勝ちました"
         print(w.format(winner))
     
@@ -104,14 +104,14 @@ class Game:
             player1name = self.player1.name
             player2name = self.player2.name
 
-            self.draw(player1name , player1card, player2name , player2card)
+            self.print_draw(player1name , player1card, player2name , player2card)
 
             if player1card > player2card:
                 self.player1.wins += 1
-                self.declear_winner_round(player1name)
+                self.print_winner(player1name)
             else:
                 self.player2.wins += 1
-                self.declear_winner_round(player2name)
+                self.print_winner(player2name)
  
         win = self.game_winner(self.player1, self.player2)
         print("ゲーム終了、{} の勝利です！".format(win))
