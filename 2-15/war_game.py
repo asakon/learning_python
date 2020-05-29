@@ -10,6 +10,7 @@ class Card:
     
     # カードは、値とスートで定まる
     def __init__(self, v, s):
+        """ 値もスートも整数値です"""
         self.value = v
         self.suit = s
 
