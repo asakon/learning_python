@@ -79,7 +79,7 @@ class Game:
     
     def print_winner(self, winner):
         w = "このラウンドは {} が勝ちました"
-        print(w.format(winner))
+        print(w.format(winner.name))
     
     def game_winner(self, player1, player2):
         if player1.wins > player2.wins:
@@ -108,10 +108,10 @@ class Game:
 
             if player1card > player2card:
                 self.player1.wins += 1
-                self.print_winner(player1name)
+                self.print_winner(self.player1)
             else:
                 self.player2.wins += 1
-                self.print_winner(player2name)
+                self.print_winner(self.player2)
  
         win = self.game_winner(self.player1, self.player2)
         print("ゲーム終了、{} の勝利です！".format(win))
