@@ -60,11 +60,11 @@ class Player:
 class Game:
     # Gameはデッキと２人のプレイヤーを持つ
     def __init__(self):
-        #name1 = inpur("プレイヤー1の名前　")
-        #name2 = inpur("プレイヤー2の名前　")
+        name1 = input("プレイヤー1の名前　")
+        name2 = input("プレイヤー2の名前　")
         self.deck = Deck()
-        self.player1 = Player(input("プレイヤー1の名前　"))
-        self.player2 = Player(input("プレイヤー2の名前　"))
+        self.player1 = Player(name1)
+        self.player2 = Player(name2)
 
     # Gameは、
     # ゲームをプレイするメソッド、
@@ -73,9 +73,9 @@ class Game:
     #  - ラウンド毎の勝者を表示するメソッド
     #  - ゲームの最後に、勝者を判定して名前を告げるメソッド
 
-    def print_draw(self, player1, player1card, player2, player2card):
+    def print_draw(self, player1, player2):
         d = "{} は {}、 {} は {} を引きました"
-        print(d.format(player1, player1card, player2, player2card))
+        print(d.format(player1.name, player1.card, player2.name, player2.card))
     
     def print_winner(self, winner):
         w = "このラウンドは {} が勝ちました"
@@ -98,15 +98,15 @@ class Game:
             if response == 'q':
                 break
             
-            player1card = self.deck.draw()
-            player2card = self.deck.draw()
+            self.player1.card = self.deck.draw()
+            self.player2.card = self.deck.draw()
 
-            player1name = self.player1.name
-            player2name = self.player2.name
+            #player1name = self.player1.name
+            #player2name = self.player2.name
 
-            self.print_draw(player1name , player1card, player2name , player2card)
+            self.print_draw(self.player1 , self.player2)
 
-            if player1card > player2card:
+            if self.player1.card > self.player2.card:
                 self.player1.wins += 1
                 self.print_winner(self.player1)
             else:
